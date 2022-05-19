@@ -22,11 +22,11 @@ const ActionScreen = ({ onClose, site }) => {
    const getTime = (m) => {
       const mday = String(m);
       const year = mday.slice(0, 4);
-      const month = Number(mday.slice(4, 6));
-      const date = Number(mday.slice(6, 8));
-      const hour = Number(mday.slice(8, 10));
-      const min = Number(mday.slice(10, 12));
-      const sec = Number(mday.slice(12));
+      const month = Number(mday.slice(5, 7));
+      const date = Number(mday.slice(8, 10));
+      const hour = Number(mday.slice(11, 13));
+      const min = Number(mday.slice(14, 16));
+      const sec = Number(mday.slice(17));
       const time = `${year}/${month}/${date} ${hour}:${min}:${sec}`;
       return time;
    }
@@ -37,28 +37,24 @@ const ActionScreen = ({ onClose, site }) => {
             <MaterialCommunityIcons name="close" color="gray" size={30} />
          </Pressable>
          <Box borderBottomColor={"white"} w={"15%"} h={1} borderRadius={3} bg="grey" mt={3} alignSelf="center"></Box>
-         <Text fontSize="lg" my={6} textAlign="center">{sna}{" "}站</Text>
+         <Text fontSize="lg" fontWeight={'bold'} my={6} textAlign="center">{sna}{" "}站</Text>
          <Box px={6} >
             <Text><Text fontWeight={'bold'}>地址：</Text>{sarea}{" "}{ar}</Text>
             <Text mt={2}><Text fontWeight={'bold'}>經度/緯度：</Text>{Number(lng).toFixed(2)}/{Number(lat).toFixed(2)}</Text>
             <Text mt={2}><Text fontWeight={'bold'}>更新時間：</Text>{getTime(mday)}</Text>
             <Center>
                <VictoryPie
-                  width={250}
+                  width={300}
                   height={250}
-                  colorScale={["tomato", "gold"]}
+                  colorScale={["#ff9626", "#2d6cc4"]}
                   data={[
                      { x: 1, y: Number(sbi), label: `可借(${sbi})` },
                      { x: 2, y: Number(bemp), label: `可還(${bemp})` },
                   ]}
                   style={{
-                     data: {
-                        fillOpacity: 0.9, stroke: "#c43a31", strokeWidth: 3
-                     },
                      labels: {
-                        fontSize: 12, fill: "#c43a31",
-                        padding: 10,
-
+                        fontSize: 14, fill: "black",
+                        padding: 14,
                      }
                   }}
                />
